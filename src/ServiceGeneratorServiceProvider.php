@@ -5,7 +5,7 @@ namespace Joy2362\ServiceGenerator;
 use Illuminate\Support\ServiceProvider;
 use Joy2362\ServiceGenerator\Commands\ServiceGenerator;
 
-class ServiceServiceProvider extends ServiceProvider
+class ServiceGeneratorServiceProvider extends ServiceProvider
 {
     protected string $serviceStubPath = __DIR__ . '/Stubs/Service.stub';
     protected string $apiServiceStubPath = __DIR__ . '/Stubs/Service.api.stub';
