@@ -2,7 +2,7 @@
 
 namespace Joy2362\ServiceGenerator;
 
-use App\Console\Commands\TraitGenerator;
+use App\Console\Command\TraitGenerator;
 use Illuminate\Support\ServiceProvider;
 use Joy2362\ServiceGenerator\Command\ServiceGenerator;
 
