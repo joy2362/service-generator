@@ -2,6 +2,7 @@
 
 namespace Joy2362\ServiceGenerator;
 
+use App\Console\Commands\TraitGenerator;
 use Illuminate\Support\ServiceProvider;
 use Joy2362\ServiceGenerator\Command\ServiceGenerator;
 
@@ -21,6 +22,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ServiceGenerator::class,
+                TraitGenerator::class,
             ]);
         }
     }
