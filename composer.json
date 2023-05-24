@@ -4,7 +4,7 @@
   "type": "library",
   "require": {
     "php": "^8.1",
-    "illuminate/support": "^10.12"
+    "illuminate/support": "^10.0"
   },
   "license": "MIT",
   "autoload": {
