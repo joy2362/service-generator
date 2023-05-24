@@ -23,5 +23,12 @@
     "sort-packages": true,
     "preferred-install": "dist",
     "optimize-autoloader": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Joy2362\\ServiceGenerator\\ServiceGeneratorServiceProvider"
+      ]
+    }
   }
 }

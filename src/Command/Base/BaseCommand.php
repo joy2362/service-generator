@@ -18,7 +18,7 @@ class BaseCommand extends Command
 
     public function getSourceFilePath($nameSpace, $name): string
     {
-        return base_path($nameSpace) . 'BaseCommand.php/' . $name . '.php';
+        return base_path($nameSpace) . '/' . $name . '.php';
     }
 
     public function createFile($path, $contents): bool
