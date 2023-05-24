@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Joy2362\ServiceGenerator\Contracts\ApiServiceContract;
+use Joy2362\ServiceGenerator\{Contracts\ApiServiceContract, Helper\ApiHelper};
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\{Collection, Facades\DB};
@@ -37,7 +37,7 @@ class $CLASS_NAME$ implements ApiServiceContract
 
         } catch (Exception $ex) {
             DB::rollBack();
-            $this->collection = $this->failed(['errors' => $ex->getMessage()]);
+            $this->collection = ApiHelper::failed(['errors' => $ex->getMessage()]);
         }
         return $this->collection;
     }
@@ -63,7 +63,7 @@ class $CLASS_NAME$ implements ApiServiceContract
             DB::commit();
         } catch (Exception $ex) {
             DB::rollBack();
-            $this->collection = $this->failed(['errors' => $ex->getMessage()]);
+            $this->collection = ApiHelper::failed(['errors' => $ex->getMessage()]);
         }
         return $this->collection;
     }
@@ -76,7 +76,7 @@ class $CLASS_NAME$ implements ApiServiceContract
         try {
 
         } catch (Exception $ex) {
-            $this->collection = $this->failed(['errors' => $ex->getMessage()]);
+            $this->collection = ApiHelper::failed(['errors' => $ex->getMessage()]);
         }
         return $this->collection;
     }
