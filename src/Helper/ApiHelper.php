@@ -42,7 +42,7 @@ class ApiHelper
      * @param int|null $status
      * @return Collection
      */
-    function failed(array $items = [], int $status = null): Collection
+    public static function failed(array $items = [], int $status = null): Collection
     {
         $res = [
             'success' => true,
