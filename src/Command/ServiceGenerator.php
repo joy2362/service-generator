@@ -1,8 +1,9 @@
 <?php
 
-namespace Joy2362\ServiceGenerator\Commands;
+namespace Joy2362\ServiceGenerator\Command;
 
 use Illuminate\Filesystem\Filesystem;
+use Joy2362\ServiceGenerator\Command\Base\BaseCommand;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class ServiceGenerator extends BaseCommand

@@ -1,6 +1,6 @@
 <?php
 
-namespace Joy2362\ServiceGenerator\Commands;
+namespace Joy2362\ServiceGenerator\Command\Base;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -18,7 +18,7 @@ class BaseCommand extends Command
 
     public function getSourceFilePath($nameSpace, $name): string
     {
-        return base_path($nameSpace) . '/' . $name . '.php';
+        return base_path($nameSpace) . 'BaseCommand.php/' . $name . '.php';
     }
 
     public function createFile($path, $contents): bool
