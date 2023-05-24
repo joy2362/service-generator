@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Joy2362\ServiceGenerator\Contracts;
+use Joy2362\ServiceGenerator\Contracts\ApiServiceContract;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\{Collection, Facades\DB};

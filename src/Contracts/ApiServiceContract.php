@@ -2,7 +2,7 @@
 
 namespace Joy2362\ServiceGenerator\Contracts;
 
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 interface ApiServiceContract
