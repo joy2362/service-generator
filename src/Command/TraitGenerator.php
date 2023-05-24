@@ -1,28 +1,37 @@
 <?php
 
-namespace Joy2362\ServiceGenerator\Command;
+namespace App\Console\Commands;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Joy2362\ServiceGenerator\Helper\ApiHelper;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
-class ServiceGenerator extends Command
+class TraitGenerator extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:service {name : The service name}  {--api}';
-    public string $nameSpace = 'App\\Services';
-    public string $filePath = 'app/Services';
+    protected $signature = 'make:trait {name : The trait name} ';
+
+
+    protected $description = 'Create a new trait';
+
+    public string $nameSpace = 'App\\Trait';
+    public string $filePath = 'app/Trait';
+
+
     /**
-     * The console command description.
+     * Create a new command instance.
      *
-     * @var string
+     * @return void
      */
-    protected $description = 'Create a new service';
+    public function __construct()
+    {
+        parent::__construct();;
+    }
 
     /**
      * Execute the console command.
@@ -31,12 +40,14 @@ class ServiceGenerator extends Command
      */
     public function handle()
     {
-        $path = ApiHelper::getSourceFilePath($this->filePath, $this->argument('name'));
+        $path = ApiHelper::getSourceFilePath($this->nameSpace, $this->argument('name'));
         ApiHelper::makeDirectory(dirname($path));
-        $contents = ApiHelper::generateStubContents($this->getStubPath(), $this->getStubVariables());
+        $contents = ApiHelper::generateStubContents($this->getStubPath(), $this->getStubVariables(), "$");
+
         ApiHelper::createFile($path, $contents) ?
-            $this->info("Service successfully created ") :
-            $this->info("Service : {$path} already exits");
+            $this->info("Trait successfully created ") :
+            $this->info("Trait : {$path} already exits");
+
         return CommandAlias::SUCCESS;
     }
 
@@ -45,12 +56,9 @@ class ServiceGenerator extends Command
     {
         $file = new Filesystem();
 
-        $path = base_path('resources/stubs/joy2362/service.stub');
-        $realPath = __DIR__ . '/../Stubs/Service.stub';
-        if ($this->option('api')) {
-            $path = base_path('resources/stubs/joy2362/service.api.stub');
-            $realPath = __DIR__ . '/../Stubs/Service.api.stub';
-        }
+        $path = base_path('resources/stubs/joy2362/trait.stub');
+        $realPath = __DIR__ . '/../Stubs/Trait.stub';
+
         if ($file->exists($path)) {
             return $path;
         } else {
@@ -73,7 +81,6 @@ class ServiceGenerator extends Command
         return [
             'NAMESPACE' => $nameSpace,
             'CLASS_NAME' => $className,
-            'API_RESOURCE' => $this->option('api') ? ucfirst(str_replace('Service', '', $className)) : "",
         ];
     }
 }
