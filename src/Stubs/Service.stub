@@ -1,0 +1,19 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Support\Collection;
+
+class $CLASS_NAME$
+{
+    private Collection $collection;
+    $API_RESOURCE$
+
+    /*
+    |
+    |--------------------------------------------------------------------------
+    | class internal methods
+    |--------------------------------------------------------------------------
+    |
+    */
+}

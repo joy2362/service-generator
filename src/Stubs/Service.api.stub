@@ -1,0 +1,90 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Joy2362\ServiceGenerator\Contracts;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\{Collection, Facades\DB};
+
+class $CLASS_NAME$ implements ApiServiceContract
+{
+    /**
+     * @var Collection
+     */
+    private Collection $collection;
+    /**
+     * @var string
+     */
+    private string $resource = "$API_RESOURCE$";
+
+    /**
+     * @inheritDoc
+     */
+    public function index(Request $request): Collection
+    {
+
+    }
+
+     /**
+     * @inheritDoc
+     */
+    public function store(Request $request): Collection
+    {
+        try {
+            DB::beginTransaction();
+            $data = $request->validated();
+
+        } catch (Exception $ex) {
+            DB::rollBack();
+            $this->collection = $this->failed(['errors' => $ex->getMessage()]);
+        }
+        return $this->collection;
+    }
+
+
+     /**
+     * @inheritDoc
+     */
+    public function show($id): Collection
+    {
+
+    }
+
+     /**
+     * @inheritDoc
+     */
+    public function update(Request $request, $id): Collection
+    {
+        try {
+            DB::beginTransaction();
+            $data = $request->validated();
+
+            DB::commit();
+        } catch (Exception $ex) {
+            DB::rollBack();
+            $this->collection = $this->failed(['errors' => $ex->getMessage()]);
+        }
+        return $this->collection;
+    }
+
+     /**
+     * @inheritDoc
+     */
+    public function destroy($id): Collection
+    {
+        try {
+
+        } catch (Exception $ex) {
+            $this->collection = $this->failed(['errors' => $ex->getMessage()]);
+        }
+        return $this->collection;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | class internal methods
+    |--------------------------------------------------------------------------
+    |
+    */
+}
