@@ -3,8 +3,7 @@
   "description": "A set of tools to make working with service easier in Laravel",
   "type": "library",
   "require": {
-    "php": "^8.1",
-    "illuminate/support": "^10.0"
+    "php": "^8.1"
   },
   "license": "MIT",
   "autoload": {
