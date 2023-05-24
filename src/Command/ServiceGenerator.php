@@ -13,7 +13,7 @@ class ServiceGenerator extends BaseCommand
      *
      * @var string
      */
-    protected $signature = 'make:service {name : The service name}  {--api : service with api resource';
+    protected $signature = 'make:service {name : The service name}  {--api}';
     public string $nameSpace = 'App\\Services';
     public string $filePath = 'app/Services';
     /**

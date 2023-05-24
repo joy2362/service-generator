@@ -3,7 +3,7 @@
 namespace Joy2362\ServiceGenerator;
 
 use Illuminate\Support\ServiceProvider;
-use Joy2362\ServiceGenerator\Commands\ServiceGenerator;
+use Joy2362\ServiceGenerator\Command\ServiceGenerator;
 
 class ServiceGeneratorServiceProvider extends ServiceProvider
 {
