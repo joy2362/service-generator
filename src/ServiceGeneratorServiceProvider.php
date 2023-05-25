@@ -2,9 +2,8 @@
 
 namespace Joy2362\ServiceGenerator;
 
-use App\Console\Command\TraitGenerator;
 use Illuminate\Support\ServiceProvider;
-use Joy2362\ServiceGenerator\Command\ServiceGenerator;
+use Joy2362\ServiceGenerator\Command\{ServiceGenerator, TraitGenerator};
 
 class ServiceGeneratorServiceProvider extends ServiceProvider
 {

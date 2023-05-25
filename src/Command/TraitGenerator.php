@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Command;
+namespace Joy2362\ServiceGenerator\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
