@@ -72,8 +72,8 @@ class ServiceGenerator extends Command
         }
         return [
             'NAMESPACE' => $nameSpace,
-            'CLASS_NAME' => $className,
-            'API_RESOURCE' => $this->option('api') ? ucfirst(str_replace('Service', '', $className)) : "",
+            'CLASS' => $className,
+            'RESOURCE' => $this->option('api') ? ucfirst(str_replace('Service', '', $className)) : "",
         ];
     }
 }

@@ -4,10 +4,10 @@ namespace $NAMESPACE$;
 
 use Illuminate\Support\Collection;
 
-class $CLASS_NAME$
+class $CLASS$
 {
     private Collection $collection;
-    $API_RESOURCE$
+    $RESOURCE$
 
     /*
     |

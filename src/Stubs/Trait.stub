@@ -1,6 +1,6 @@
 <?php
 namespace $NAMESPACE$;
 
-trait $CLASS_NAME$ {
+trait $CLASS$ {
 
 }

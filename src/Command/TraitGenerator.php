@@ -80,7 +80,7 @@ class TraitGenerator extends Command
         }
         return [
             'NAMESPACE' => $nameSpace,
-            'CLASS_NAME' => $className,
+            'CLASS' => $className,
         ];
     }
 }

@@ -1,0 +1,14 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use App\Http\Controllers\Controller;;
+use $SERVICE-NAMESPACE$;
+
+class $CLASS$ extends Controller
+{
+    public function __construct(public $SERVICE$ $service)
+    {
+    }
+
+}
