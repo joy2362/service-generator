@@ -3,7 +3,7 @@
 namespace Joy2362\ServiceGenerator;
 
 use Illuminate\Support\ServiceProvider;
-use Joy2362\ServiceGenerator\Command\{ServiceGenerator, TraitGenerator};
+use Joy2362\ServiceGenerator\Command\{CSGenerator, ServiceGenerator, TraitGenerator};
 
 class ServiceGeneratorServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
             $this->commands([
                 ServiceGenerator::class,
                 TraitGenerator::class,
+                CSGenerator::class,
             ]);
         }
     }
