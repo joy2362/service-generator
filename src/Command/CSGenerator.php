@@ -14,7 +14,7 @@ class CSGenerator extends Command
      *
      * @var string
      */
-    protected $signature = 'make:c-s {name: The service controller name}  {--api}';
+    protected $signature = 'make:c-s {name}  {--api}';
     public string $nameSpace = 'App\\Services';
     public string $filePath = 'app/Services';
 
@@ -103,7 +103,7 @@ class CSGenerator extends Command
     {
         return [
             'NAMESPACE' => $this->nameSpace,
-            'CLASS_NAME' => $this->argument('name') . "Service",
+            'CLASS' => $this->argument('name') . "Service",
             'RESOURCE' => $this->option('api') ? ucfirst($this->argument('name')) : "",
         ];
     }
