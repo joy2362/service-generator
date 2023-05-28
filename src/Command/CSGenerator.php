@@ -3,6 +3,7 @@
 namespace Joy2362\ServiceGenerator\Command;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Joy2362\ServiceGenerator\Helper\ApiHelper;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
@@ -54,35 +55,48 @@ class CSGenerator extends Command
 
     public function createController(): bool
     {
-        $path =  ApiHelper::getSourceFilePath($this->ControllerFilePath, $this->argument('name') . "Controller");
+        $path = ApiHelper::getSourceFilePath($this->ControllerFilePath, $this->argument('name') . "Controller");
         ApiHelper::makeDirectory(dirname($path));
-        $contents =  ApiHelper::generateStubContents($this->getControllerStubPath(), $this->getControllerStubVariables());
-        return  ApiHelper::createFile($path, $contents);
+        $contents = ApiHelper::generateStubContents(
+            $this->getControllerStubPath(),
+            $this->getControllerStubVariables()
+        );
+        return ApiHelper::createFile($path, $contents);
     }
 
     public function createService(): bool
     {
         $path = ApiHelper:: getSourceFilePath($this->filePath, $this->argument('name') . "Service");
         ApiHelper::makeDirectory(dirname($path));
-        $contents =  ApiHelper::generateStubContents($this->getServiceStubPath(), $this->getServiceStubVariables());
-        return  ApiHelper::createFile($path, $contents);
+        $contents = ApiHelper::generateStubContents($this->getServiceStubPath(), $this->getServiceStubVariables());
+        return ApiHelper::createFile($path, $contents);
     }
 
     public function getControllerStubPath(): string
     {
+        $file = new Filesystem();
+
+        $path = base_path('resources/stubs/joy2362/controller.stub');
+        $realPath = __DIR__ . '/../Stubs/Controller.stub';
         if ($this->option('api')) {
-            return base_path('stubs') . '/Controller.api.stub';
+            $path = base_path('resources/stubs/joy2362/controller.api.stub');
+            $realPath = __DIR__ . '/../Stubs/Controller.api.stub';
         }
-        return base_path('stubs') . '/Controller.stub';
+        return $file->exists($path) ? $path : $realPath;
     }
 
 
     public function getServiceStubPath(): string
     {
+        $file = new Filesystem();
+
+        $path = base_path('resources/stubs/joy2362/service.stub');
+        $realPath = __DIR__ . '/../Stubs/Service.stub';
         if ($this->option('api')) {
-            return base_path('stubs') . '/Service.api.stub';
+            $path = base_path('resources/stubs/joy2362/service.api.stub');
+            $realPath = __DIR__ . '/../Stubs/Service.api.stub';
         }
-        return base_path('stubs') . '/Service.stub';
+        return $file->exists($path) ? $path : $realPath;
     }
 
     public function getServiceStubVariables(): array
@@ -118,14 +132,17 @@ class CSGenerator extends Command
 
     public function getRequestStubPath(): string
     {
-        return base_path('stubs') . '/Request.stub';
+        $file = new Filesystem();
+        $path = base_path('resources/stubs/joy2362/request.stub');
+        $realPath = __DIR__ . '/../Stubs/Request.stub';
+        return $file->exists($path) ? $path : $realPath;
     }
 
     public function createRequest(): bool
     {
-        $path =  ApiHelper::getSourceFilePath($this->RequestFilePath, $this->argument('name') . "Request");
+        $path = ApiHelper::getSourceFilePath($this->RequestFilePath, $this->argument('name') . "Request");
         ApiHelper::makeDirectory(dirname($path));
-        $contents =  ApiHelper::generateStubContents($this->getRequestStubPath(), $this->getRequestStubVariables());
-        return  ApiHelper::createFile($path, $contents);
+        $contents = ApiHelper::generateStubContents($this->getRequestStubPath(), $this->getRequestStubVariables());
+        return ApiHelper::createFile($path, $contents);
     }
 }
