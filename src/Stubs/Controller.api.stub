@@ -15,26 +15,26 @@ class $CLASS$ extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        return apiResponse($this->service->index($request));
+        return ApiHelper::response($this->service->index($request));
     }
 
     public function store(CouponRequest $request): JsonResponse
     {
-        return apiResponse($this->service->store($request));
+        return ApiHelper::response($this->service->store($request));
     }
 
     public function show($id): JsonResponse
     {
-        return apiResponse($this->service->show($id));
+        return ApiHelper::response($this->service->show($id));
     }
 
     public function update(CouponRequest $request, $id): JsonResponse
     {
-        return apiResponse($this->service->update($request, $id));
+        return ApiHelper::response($this->service->update($request, $id));
     }
 
     public function destroy($id): JsonResponse
     {
-        return apiResponse($this->service->destroy($id));
+        return ApiHelper::response($this->service->destroy($id));
     }
 }

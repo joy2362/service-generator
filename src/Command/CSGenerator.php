@@ -115,7 +115,7 @@ class CSGenerator extends Command
             'CLASS' => $this->argument('name') . "Controller",
             'SERVICE' => $this->argument('name') . "Service",
             'SERVICE-NAMESPACE' => $this->nameSpace . "\\" . $this->argument('name') . "Service",
-            'REQUEST-NAMESPACE' => $this->option('api') ? $this->nameSpace . "\\" . $this->argument(
+            'REQUEST-NAMESPACE' => $this->option('api') ? 'use' . $this->RequestNameSpace . "\\" . $this->argument(
                     'name'
                 ) . "Request" : '',
         ];
