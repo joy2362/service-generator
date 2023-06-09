@@ -2,9 +2,9 @@
 
 namespace $NAMESPACE$;
 
-use App\Http\Requests\Base\BaseRequest;
+use Joy2362\ServiceGenerator\Request\ApiServiceRequest;
 
-class $CLASS$ extends BaseRequest
+class $CLASS$ extends ApiServiceRequest
 {
     /**
      * Determine if the user is authorized to make this request.
