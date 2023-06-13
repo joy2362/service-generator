@@ -18,7 +18,7 @@ class $CLASS$ extends Controller
         return ApiHelper::response($this->service->index($request));
     }
 
-    public function store(CouponRequest $request): JsonResponse
+    public function store($REQUEST$ $request): JsonResponse
     {
         return ApiHelper::response($this->service->store($request));
     }
@@ -28,7 +28,7 @@ class $CLASS$ extends Controller
         return ApiHelper::response($this->service->show($id));
     }
 
-    public function update(CouponRequest $request, $id): JsonResponse
+    public function update($REQUEST$ $request, $id): JsonResponse
     {
         return ApiHelper::response($this->service->update($request, $id));
     }

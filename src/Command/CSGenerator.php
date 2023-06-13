@@ -118,6 +118,10 @@ class CSGenerator extends Command
             'REQUEST-NAMESPACE' => $this->option('api') ? 'use' . $this->RequestNameSpace . "\\" . $this->argument(
                     'name'
                 ) . "Request" : '',
+            'REQUEST' => $this->option('api') ?  $this->argument(
+                    'name'
+                ) . "Request" : 'Request',
+
         ];
     }
 
