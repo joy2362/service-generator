@@ -46,7 +46,7 @@ class ApiHelper
     public static function failed(array $items = [], int $status = null): Collection
     {
         $res = [
-            'success' => true,
+            'success' => false,
             'status' => $status ?? Response::HTTP_UNPROCESSABLE_ENTITY,
         ];
 
