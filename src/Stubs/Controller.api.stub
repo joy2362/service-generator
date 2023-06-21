@@ -4,6 +4,7 @@ namespace $NAMESPACE$;
 
 use App\Http\Controllers\Controller;
 use $SERVICE-NAMESPACE$;
+use Joy2362\ServiceGenerator\Helper\ApiHelper;
 use Illuminate\Http\{JsonResponse, Request};
 $REQUEST-NAMESPACE$;
 
