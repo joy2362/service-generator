@@ -13,7 +13,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
     protected string $apiControllerStubPath = __DIR__ . '/Stubs/Controller.api.stub';
     protected string $requestStubPath = __DIR__ . '/Stubs/Request.stub';
     protected string $traitStubPath = __DIR__ . '/Stubs/Trait.stub';
-    protected string $lang = __DIR__ . '/Lang/resource.php';
+    protected string $lang = __DIR__ . '/Lang';
 
     /**
      * Register any application services.
@@ -45,7 +45,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
                 __DIR__ . '/Stubs' => resource_path('stubs/joy2362'),
             ], 'service-generator-stub');
             $this->publishes([
-                __DIR__ . '/Lang' => $this->app->langPath('joy2362'),
+                $this->lang => $this->app->langPath('joy2362/service-generator'),
             ], 'service-generator-lang');
         }
     }
