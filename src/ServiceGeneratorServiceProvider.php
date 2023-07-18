@@ -37,6 +37,8 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->loadTranslationsFrom(__DIR__.'/Lang/en/resource.php', 'apiHelper');
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 $this->serviceStubPath => resource_path('stubs/joy2362/service.stub'),

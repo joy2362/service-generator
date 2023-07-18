@@ -6,6 +6,8 @@ namespace Joy2362\ServiceGenerator\Helper;
 use Illuminate\{Http\JsonResponse, Support\Collection};
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Storage;
+
 
 class ApiHelper
 {
@@ -89,6 +91,44 @@ class ApiHelper
         }
 
         return $contents;
+    }
+
+    public static function upload($file, $path, $old = null)
+    {
+        $code = date('ymdhis') . '-' . rand(1111, 9999);
+        if (!empty($old)) {
+            $oldFile = oldFile($old);
+            if (Storage::disk('public')->exists($oldFile)) {
+                Storage::disk('public')->delete($oldFile);
+            }
+        }
+        //FILE UPLOAD
+        if (!empty($file)) {
+            $fileName = $code . "." . $file->getClientOriginalExtension();
+            makeDir($path);
+            return Storage::disk('public')->putFileAs('upload/' . $path, $file, $fileName);
+        }
+    }
+
+    public static function makeDir($folder): void
+    {
+        $main_dir = storage_path("app/public/upload/{$folder}");
+        if (!file_exists($main_dir)) {
+            mkdir($main_dir, 0777, true);
+        }
+    }
+
+    public static function oldFile($file): string
+    {
+        $ex = explode('storage/', $file);
+        return $ex[0] ?? "";
+    }
+
+    public static function deleteFile($file): void
+    {
+        if (Storage::disk('public')->exists($file)):
+            Storage::delete($file);
+        endif;
     }
 
 }
