@@ -38,18 +38,15 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadTranslationsFrom($this->lang, 'service-generator');
+        $this->loadTranslationsFrom($this->lang, 'ApiHelper');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                $this->serviceStubPath => resource_path('stubs/joy2362/service.stub'),
-                $this->apiServiceStubPath => resource_path('stubs/joy2362/service.api.stub'),
-                $this->traitStubPath => resource_path('stubs/joy2362/trait.stub'),
-                $this->controllerStubPath => resource_path('stubs/joy2362/controller.stub'),
-                $this->apiControllerStubPath => resource_path('stubs/joy2362/controller.api.stub'),
-                $this->requestStubPath => resource_path('stubs/joy2362/request.stub'),
-                $this->lang => resource_path('lang/joy2362/resource.php'),
-            ], 'service-generator');
+                __DIR__ . '/Stubs' => resource_path('stubs/joy2362'),
+            ], 'service-generator-stub');
+            $this->publishes([
+                __DIR__ . '/Lang' => $this->app->langPath('joy2362'),
+            ], 'service-generator-lang');
         }
     }
 }
