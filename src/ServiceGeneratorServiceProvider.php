@@ -13,6 +13,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
     protected string $apiControllerStubPath = __DIR__ . '/Stubs/Controller.api.stub';
     protected string $requestStubPath = __DIR__ . '/Stubs/Request.stub';
     protected string $traitStubPath = __DIR__ . '/Stubs/Trait.stub';
+    protected string $lang = __DIR__ . '/Lang/resource.php';
 
     /**
      * Register any application services.
@@ -37,7 +38,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadTranslationsFrom(__DIR__.'/Lang/en/resource.php', 'apiHelper');
+        $this->loadTranslationsFrom($this->lang, 'service-generator');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -47,6 +48,7 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
                 $this->controllerStubPath => resource_path('stubs/joy2362/controller.stub'),
                 $this->apiControllerStubPath => resource_path('stubs/joy2362/controller.api.stub'),
                 $this->requestStubPath => resource_path('stubs/joy2362/request.stub'),
+                $this->lang => resource_path('lang/joy2362/resource.php'),
             ], 'service-generator');
         }
     }
