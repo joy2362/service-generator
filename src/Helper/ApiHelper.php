@@ -97,7 +97,7 @@ class ApiHelper
     {
         $code = date('ymdhis') . '-' . rand(1111, 9999);
         if (!empty($old)) {
-            $oldFile = oldFile($old);
+            $oldFile = self::oldFile($old);
             if (Storage::disk('public')->exists($oldFile)) {
                 Storage::disk('public')->delete($oldFile);
             }
@@ -105,7 +105,7 @@ class ApiHelper
         //FILE UPLOAD
         if (!empty($file)) {
             $fileName = $code . "." . $file->getClientOriginalExtension();
-            makeDir($path);
+            self::makeDir($path);
             return Storage::disk('public')->putFileAs('upload/' . $path, $file, $fileName);
         }
     }
