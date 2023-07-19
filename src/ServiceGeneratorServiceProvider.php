@@ -4,6 +4,7 @@ namespace Joy2362\ServiceGenerator;
 
 use Illuminate\Support\ServiceProvider;
 use Joy2362\ServiceGenerator\Command\{CSGenerator, ServiceGenerator, TraitGenerator};
+use Joy2362\ServiceGenerator\Middleware\CustomRateLimiter;
 
 class ServiceGeneratorServiceProvider extends ServiceProvider
 {
@@ -39,6 +40,8 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadTranslationsFrom($this->lang, 'ApiHelper');
+
+        $this->app['router']->aliasMiddleware('ApiHelperRateLimiter', CustomRateLimiter::class);
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
