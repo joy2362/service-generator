@@ -131,4 +131,24 @@ class ApiHelper
         endif;
     }
 
+    public static function getModelList($path = null)
+    {
+        $cPath = $path ?? app_path('Models'); 
+        $models = [];
+        $results = scandir($cPath);
+        
+        foreach($results as $result){
+            if ($result === '.' or $result === '..') continue;
+            if(!str_ends_with( $result , '.php' )){
+                $nastedPath = "{$cPath}/{$result}";
+                if(is_dir($nastedPath)){
+                    $models = array_merge($models , self::getModelList($nastedPath));
+                }
+            }else{
+                $models[] = substr( $result , 0,-4);
+            }
+        }
+        return $models;
+    }
+
 }

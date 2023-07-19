@@ -8,12 +8,7 @@ use Joy2362\ServiceGenerator\Middleware\CustomRateLimiter;
 
 class ServiceGeneratorServiceProvider extends ServiceProvider
 {
-    protected string $serviceStubPath = __DIR__ . '/Stubs/Service.stub';
-    protected string $apiServiceStubPath = __DIR__ . '/Stubs/Service.api.stub';
-    protected string $controllerStubPath = __DIR__ . '/Stubs/Controller.stub';
-    protected string $apiControllerStubPath = __DIR__ . '/Stubs/Controller.api.stub';
-    protected string $requestStubPath = __DIR__ . '/Stubs/Request.stub';
-    protected string $traitStubPath = __DIR__ . '/Stubs/Trait.stub';
+    protected string $stubPath = __DIR__ . '/Stubs';
     protected string $lang = __DIR__ . '/Lang';
 
     /**
@@ -45,8 +40,9 @@ class ServiceGeneratorServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/Stubs' => resource_path('stubs/joy2362'),
+                $this->stubPath => resource_path('stubs/joy2362'),
             ], 'service-generator-stub');
+            
             $this->publishes([
                 $this->lang => $this->app->langPath('joy2362/service-generator'),
             ], 'service-generator-lang');

@@ -16,6 +16,7 @@ class CSGenerator extends Command
      */
     protected $signature = 'make:c-s {name}  {--api}';
     public string $nameSpace = 'App\\Services';
+    public bool $isCrud = false;
     public string $filePath = 'app/Services';
 
     public string $ControllerNameSpace = 'App\Http\Controllers';
@@ -37,6 +38,11 @@ class CSGenerator extends Command
      */
     public function handle()
     {
+        $models = ApiHelper::getModelList();
+        if(array_search(ucfirst($this->argument('name')),$models)){
+            $this->isCrud = true;
+        }
+        
         $this->createService() ?
             $this->createController() ?
                 $this->option('api') ?
@@ -66,7 +72,7 @@ class CSGenerator extends Command
 
     public function createService(): bool
     {
-        $path = ApiHelper:: getSourceFilePath($this->filePath, $this->argument('name') . "Service");
+        $path = ApiHelper::getSourceFilePath($this->filePath, $this->argument('name') . "Service");
         ApiHelper::makeDirectory(dirname($path));
         $contents = ApiHelper::generateStubContents($this->getServiceStubPath(), $this->getServiceStubVariables());
         return ApiHelper::createFile($path, $contents);
@@ -88,24 +94,38 @@ class CSGenerator extends Command
 
     public function getServiceStubPath(): string
     {
+        
         $file = new Filesystem();
 
         $path = base_path('resources/stubs/joy2362/service.stub');
         $realPath = __DIR__ . '/../Stubs/Service.stub';
         if ($this->option('api')) {
-            $path = base_path('resources/stubs/joy2362/service.api.stub');
-            $realPath = __DIR__ . '/../Stubs/Service.api.stub';
+            if($this->isCrud){
+                $path = base_path('resources/stubs/joy2362/service.crud.stub');
+                $realPath = __DIR__ . '/../Stubs/Service.crud.stub';
+            }else{
+                $path = base_path('resources/stubs/joy2362/service.api.stub');
+                $realPath = __DIR__ . '/../Stubs/Service.api.stub';
+            }
         }
+       
         return $file->exists($path) ? $path : $realPath;
     }
 
     public function getServiceStubVariables(): array
     {
-        return [
+        $variable =  [
             'NAMESPACE' => $this->nameSpace,
             'CLASS' => $this->argument('name') . "Service",
-            'RESOURCE' => $this->option('api') ? ucfirst($this->argument('name')) : "",
+            'RESOURCE' => $this->option('api') || $this->crud  ? ucfirst($this->argument('name')) : "",
         ];
+
+        if($this->isCrud){
+            $variable['RESOURCE_NAMESPACE'] = ucfirst($this->argument('name'));
+            $variable['RESOURCE_NAME'] = lcfirst($this->argument('name'));  
+        }
+        
+        return $variable;
     }
 
     public function getControllerStubVariables(): array
