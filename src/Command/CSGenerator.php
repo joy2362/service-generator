@@ -117,7 +117,7 @@ class CSGenerator extends Command
         $variable =  [
             'NAMESPACE' => $this->nameSpace,
             'CLASS' => $this->argument('name') . "Service",
-            'RESOURCE' => $this->option('api') || $this->crud  ? ucfirst($this->argument('name')) : "",
+            'RESOURCE' => $this->option('api') || $this->isCrud  ? ucfirst($this->argument('name')) : "",
         ];
 
         if($this->isCrud){
