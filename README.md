@@ -17,11 +17,16 @@ A set of tools to make working with service easier in Laravel
 You can install this package using [Composer](https://getcomposer.org).
 
 ``` bash
-$ composer require joy2362/service-generator
+composer require joy2362/service-generator
 ```
 Publish lang file:
 ``` bash
-$ php artisan vendor:publish --provider="Joy2362\ServiceGenerator\ServiceGeneratorServiceProvider" --tag="service-generator-lang"
+php artisan vendor:publish --provider="Joy2362\ServiceGenerator\ServiceGeneratorServiceProvider" --tag="service-generator-stub"
+```
+
+Publish stub file:
+``` bash
+php artisan vendor:publish --provider="Joy2362\ServiceGenerator\ServiceGeneratorServiceProvider" --tag="service-generator-lang"
 ```
 
 
