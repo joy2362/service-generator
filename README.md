@@ -34,7 +34,7 @@ php artisan vendor:publish --provider="Joy2362\ServiceGenerator\ServiceGenerator
 ### 1. Create trait
 
 ``` php
-TimeZone::list();
+php artisan make:trait NotifiableTrait
 ```
 
 
