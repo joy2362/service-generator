@@ -40,7 +40,7 @@ class TraitGenerator extends Command
      */
     public function handle()
     {
-        $path = ApiHelper::getSourceFilePath($this->nameSpace, $this->argument('name'));
+        $path = ApiHelper::getSourceFilePath($this->filePath, $this->argument('name'));
         ApiHelper::makeDirectory(dirname($path));
         $contents = ApiHelper::generateStubContents($this->getStubPath(), $this->getStubVariables(), "$");
 
