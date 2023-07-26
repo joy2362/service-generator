@@ -29,4 +29,12 @@ Publish stub file:
 php artisan vendor:publish --provider="Joy2362\ServiceGenerator\ServiceGeneratorServiceProvider" --tag="service-generator-lang"
 ```
 
+## Usage
+
+### 1. Create trait
+
+``` php
+TimeZone::list();
+```
+
 
