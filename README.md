@@ -12,4 +12,16 @@ A set of tools to make working with service easier in Laravel
 * Creates controller service by using artisan command
 * Add common functions that require to create API
 
+## Installation
+
+You can install this package using [Composer](https://getcomposer.org).
+
+``` bash
+$ composer require joy2362/service-generator
+```
+Publish lang file:
+``` bash
+$ php artisan vendor:publish --provider="Joy2362\ServiceGenerator\ServiceGeneratorServiceProvider" --tag="service-generator-lang"
+```
+
 
