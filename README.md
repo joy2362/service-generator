@@ -60,7 +60,7 @@ File location app/service && app/Http/Controllers
 php artisan make:c-s Category
 ```
 
-### i. create controller and service with API crud operation
+### ii. create controller and service with API crud operation
 File location app/service && app/Http/Controllers && app/Http/Requests
 
 ```php
