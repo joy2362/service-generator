@@ -6,7 +6,7 @@ A set of tools to make working with service easier in Laravel
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/joy2362/service-generator.svg?style=flat-square)](https://packagist.org/packages/joy2362/service-generator)
 
-## Basics
+## Top features:
 
 -   Creates trait by using artisan command
 -   Creates service by using artisan command
@@ -40,3 +40,6 @@ php artisan vendor:publish  --tag="service-generator-lang"
 ```php
 php artisan make:trait NotifiableTrait
 ```
+Tip: trail locate app/trait
+
+
