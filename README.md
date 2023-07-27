@@ -40,6 +40,6 @@ php artisan vendor:publish  --tag="service-generator-lang"
 ```php
 php artisan make:trait NotifiableTrait
 ```
-Tip: trail locate app/trait
+File location app/trait
 
 
