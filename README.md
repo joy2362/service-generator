@@ -37,9 +37,19 @@ php artisan vendor:publish  --tag="service-generator-lang"
 
 ### 1. Create trait
 
+File location app/trait
+
 ```php
 php artisan make:trait NotifiableTrait
 ```
-File location app/trait
+
+### 2. Create service
+
+File location app/service
+
+```php
+php artisan make:service CategoryService
+```
+
 
 
