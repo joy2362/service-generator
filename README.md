@@ -69,5 +69,17 @@ php artisan make:c-s Category --api
 
 **Tip:** *if the name matches with any model then it will generate crud operation*
 
+## Changelog
+
+Please see [Releases](../../releases) for more information on what has changed recently.
+
+## Contributing
+
+Pull requests are more than welcome. You must follow the PSR coding standards.
+
+## Security
+
+If you discover any security-related issues, please email abdullahzahidjoy@gmail.com instead of using the issue tracker.
+
 
 
