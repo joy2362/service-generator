@@ -51,5 +51,12 @@ File location app/service
 php artisan make:service CategoryService
 ```
 
+### 3. Create controller service
+
+File location app/service && app/Http/Controllers 
+
+```php
+php artisan make:c-s Category
+```
 
 
