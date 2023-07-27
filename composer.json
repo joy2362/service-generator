@@ -33,6 +33,11 @@
       "Joy2362\\ServiceGenerator\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Joy2362\\ServiceGenerator\\Tests\\": "tests/"
+    }
+  },
   "authors": [
     {
       "name": "joy2362",
