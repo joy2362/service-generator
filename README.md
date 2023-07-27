@@ -53,10 +53,21 @@ php artisan make:service CategoryService
 
 ### 3. Create controller service
 
+### i. create controller and service file only
 File location app/service && app/Http/Controllers 
 
 ```php
 php artisan make:c-s Category
 ```
+
+### i. create controller and service with API crud operation
+File location app/service && app/Http/Controllers && app/Http/Requests
+
+```php
+php artisan make:c-s Category --api
+```
+
+**Tip:** *if the name matches with any model then it will generate crud operation*
+
 
 
